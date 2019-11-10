@@ -9,16 +9,26 @@ export class SignIn extends Component {
       password: ''
     }
   }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+  }
+
+  handleChange = (e) => {
+    const {value, name } = e.target;
+    this.setState({[name]: value});
+  }
+
   render() {
     return (
       <div className="sign-in">
         <h2>I already have an account</h2>
         <span>Sign in with your email and password</span>
 
-        <form>
-          <input type="email" name="email" value={this.state.email} required={true} />
+        <form submit={this.handleSubmit}>
+          <input type="email" name="email" value={this.state.email} required={true} onChange={this.handleChange}/>
           <label htmlFor="email">Email</label>
-          <input type="password" name="password" value={this.state.password} required={true} />
+          <input type="password" name="password" value={this.state.password} required={true} onChange={this.handleChange}/>
           <label htmlFor="password">Password</label>
           <input type="submit" value="Submit Form"/>
         </form>
