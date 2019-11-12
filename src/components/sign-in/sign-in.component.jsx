@@ -19,6 +19,7 @@ export class SignIn extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    console.log('Ahoy sailor');
   };
 
   handleChange = (e) => {
@@ -32,7 +33,7 @@ export class SignIn extends Component {
         <h2>I already have an account</h2>
         <span>Sign in with your email and password</span>
 
-        <form submit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <FormInput
             type='email'
             name='email'
@@ -49,8 +50,12 @@ export class SignIn extends Component {
             handleChange={this.handleChange}
             label={'Password'}
           />
-          <CustomButton type='submit'>Sign In</CustomButton>
-          <CustomButton onClick={signInWithGoogle}>Sign In with Google</CustomButton>
+          <div className='buttons'>
+            <CustomButton type='submit'>Sign In</CustomButton>
+            <CustomButton onClick={signInWithGoogle} isGoogleSignIn>
+              Sign In with Google
+            </CustomButton>
+          </div>
         </form>
       </div>
     );

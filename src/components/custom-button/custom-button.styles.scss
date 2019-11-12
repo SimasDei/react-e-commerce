@@ -14,6 +14,16 @@
   border: none;
   cursor: pointer;
 
+  &.google-sign-in {
+    background-color: #4285f4;
+
+    &:hover {
+      background-color: #357ae8;
+      color: white;
+      border: none;
+    }
+  }
+
   &:hover {
     background-color: white;
     color: black;
