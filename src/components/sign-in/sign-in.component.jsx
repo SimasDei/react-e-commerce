@@ -19,7 +19,6 @@ export class SignIn extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Ahoy sailor');
   };
 
   handleChange = (e) => {
