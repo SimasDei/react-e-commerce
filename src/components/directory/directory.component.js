@@ -1,29 +1,28 @@
-import React from 'react'
+import React from 'react';
 
 import './directory.styles.scss';
 
 import MenuItem from '../menu-item/menu-item.component';
 import sections from './directory.data';
 
-
 class Directory extends React.Component {
-  constructor(){
+  constructor() {
     super();
 
     this.state = {
-      sections
-    }
+      sections,
+    };
   }
 
   render() {
-    const {sections} = this.state;
+    const { sections } = this.state;
     return (
-      <div className="directory-menu">
-        {
-          sections.map(({id, ...sectionProps}) => <MenuItem key={id} {...sectionProps} />)
-        }
+      <div className='directory-menu'>
+        {sections.map(({ id, ...sectionProps }) => (
+          <MenuItem key={id} {...sectionProps} />
+        ))}
       </div>
-    )
+    );
   }
 }
 
