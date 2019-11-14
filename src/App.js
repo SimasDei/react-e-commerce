@@ -35,7 +35,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='main-container'>
         <Header />
         <Switch>
           <Route exact path='/' component={HomePage} />
