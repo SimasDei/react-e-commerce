@@ -6,7 +6,7 @@ import { createStructuredSelector } from 'reselect';
 import './App.css';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils.js';
 import { setCurrentUser } from './redux/user/user.actions';
-import { selectCurrentUser } from './redux/user/user.selector';
+import { selectCurrentUser } from './redux/user/user.selectors';
 
 import HomePage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shoppage/shoppage.component';
