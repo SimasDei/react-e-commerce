@@ -29,3 +29,10 @@ export const fetchCollectionsStartAsync = () => {
       .catch((error) => dispatch(fetchCollectionsFailure(error.message)));
   };
 };
+
+export default {
+  fetchCollectionsStart,
+  fetchCollectionsSuccess,
+  fetchCollectionsFailure,
+  fetchCollectionsStartAsync,
+};
