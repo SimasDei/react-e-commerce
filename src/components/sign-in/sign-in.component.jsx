@@ -8,31 +8,19 @@ import { googleSignInStart, emailSignInStart } from '../../redux/user/user.actio
 
 import { SignInContainer, SignInTitle, ButtonsBarContainer } from './sign-in.styles';
 
-const SignIn = () => {
-  // constructor(props) {
-  //   super(props);
-
-  //   this.state = {
-  //     email: '',
-  //     password: '',
-  //   };
-  // }
+const SignIn = ({ emailSignInStart, googleSignInStart }) => {
   const [userCredentials, setCredentials] = useState({ email: '', password: '' });
+  const { email, password } = userCredentials;
 
-  const handleSubmit = async (event: { preventDefault: () => void }) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const { emailSignInStart } = this.props;
-    const { email, password } = this.state;
     emailSignInStart(email, password);
   };
 
   const handleChange = (event) => {
     const { value, name } = event.target;
-
-    this.setState({ [name]: value });
+    setCredentials({ ...userCredentials, [name]: value });
   };
-
-  const { googleSignInStart } = this.props;
 
   return (
     <SignInContainer>
@@ -44,14 +32,14 @@ const SignIn = () => {
           name='email'
           type='email'
           handleChange={handleChange}
-          value={this.state.email}
+          value={email}
           label='email'
           required
         />
         <FormInput
           name='password'
           type='password'
-          value={this.state.password}
+          value={password}
           handleChange={handleChange}
           label='password'
           required
@@ -69,8 +57,7 @@ const SignIn = () => {
 
 const mapDispatchToProps = (dispatch) => ({
   googleSignInStart: () => dispatch(googleSignInStart()),
-  emailSignInStart: (email: string, password: string) =>
-    dispatch(emailSignInStart({ email, password })),
+  emailSignInStart: (email, password) => dispatch(emailSignInStart({ email, password })),
 });
 
 export default connect(null, mapDispatchToProps)(SignIn);

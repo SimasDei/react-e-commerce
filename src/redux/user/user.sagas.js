@@ -56,7 +56,7 @@ export function* signUp({ payload: { email, password, displayName } }) {
 }
 
 export function* signInAfterSignUp({ payload: { user, additionalData } }) {
-  yield put(getSnapshotFromUserAuth(user, additionalData));
+  yield getSnapshotFromUserAuth(user, additionalData);
 }
 
 export function* signOut() {
@@ -106,6 +106,7 @@ export function* userSagas() {
   yield all([
     call(onGoogleSignInStart),
     call(onEmailSignInStart),
+    call(signUpStart),
     call(onSignUpSuccess),
     call(isUserAuthenticated),
     call(onSignOutStart),

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -16,15 +16,11 @@ import SignInAndSingUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up
 import Header from './components/header/header.component';
 
 interface IAppProps {
-  checkUserSession?: any;
+  checkUserSession?: void | any;
   currentUser?: object;
 }
 
 class App extends React.Component<IAppProps> {
-  constructor(props: Readonly<{}>) {
-    super(props);
-  }
-
   componentDidMount() {
     const { checkUserSession } = this.props;
     checkUserSession();
