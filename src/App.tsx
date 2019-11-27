@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -11,15 +11,18 @@ import { selectCollectionsForPreview } from './redux/shop/shop.selectors';
 import HomePage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shoppage/shoppage.component';
 import CheckoutPage from './pages/checkout/checkout.component';
-import SignInAndSingUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component.jsx';
+import SignInAndSingUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 
 import Header from './components/header/header.component';
 
-class App extends React.Component {
-  unsubscribeFromAuth = null;
+interface IAppProps {
+  checkUserSession?: any;
+  currentUser?: object;
+}
 
-  componentWillUnmount() {
-    this.unsubscribeFromAuth();
+class App extends React.Component<IAppProps> {
+  constructor(props: Readonly<{}>) {
+    super(props);
   }
 
   componentDidMount() {
@@ -53,7 +56,7 @@ const mapStatetoProps = createStructuredSelector({
   collectionsArray: selectCollectionsForPreview,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: (arg0: { type: string }) => void) => ({
   checkUserSession: () => dispatch(checkUserSession()),
 });
 
